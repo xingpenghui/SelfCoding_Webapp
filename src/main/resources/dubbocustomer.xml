@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--1、名称-->
+    <dubbo:application name="xph_usercustomer"></dubbo:application>
+    <!--2、注册中心-->
+    <dubbo:registry protocol="zookeeper" address="zookeeper://39.105.189.141:2181"></dubbo:registry>
+    <!--3、标记协议-->
+    <dubbo:protocol name="dubbo" port="20882"></dubbo:protocol>
+    <!--4、消费服务-->
+    <dubbo:reference interface="com.feri.service.user.UserService" id="userProvider" retries="0"></dubbo:reference>
+</beans>
