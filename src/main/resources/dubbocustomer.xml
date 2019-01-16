@@ -11,4 +11,5 @@
     <dubbo:protocol name="dubbo" port="20882"></dubbo:protocol>
     <!--4、消费服务-->
     <dubbo:reference interface="com.feri.service.user.UserService" id="userProvider" retries="0"></dubbo:reference>
+    <dubbo:reference interface="com.feri.service.user.UserSigninService" id="usersigninProvider" retries="0"></dubbo:reference>
 </beans>
