@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试文件上传</title>
+</head>
+<body>
+<div>
+    <h1>上传文件或图片</h1>
+    <form action="/fileupload.do" method="post" enctype="multipart/form-data">
+        <input type="file" name="file"><br/>
+        <input type="submit" value="上传">
+    </form>
+    <br/>
+    <h1>上传视频</h1>
+    <form action="/videoupload.do" method="post" enctype="multipart/form-data">
+        <input type="file" name="video"><br/>
+        <input type="submit" value="上传视频">
+    </form>
+
+</div>
+
+</body>
+</html>

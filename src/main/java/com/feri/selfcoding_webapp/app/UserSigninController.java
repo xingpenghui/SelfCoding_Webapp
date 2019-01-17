@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class UserSigninController {
-    @Autowired
+    //@Autowired
     private UserSigninService userSigninService;
 
     //查询签到记录
@@ -26,7 +26,7 @@ public class UserSigninController {
         return userSigninService.checkSign(token);
     }
     //签到
-    @GetMapping("usersignincheck.do")
+    @GetMapping("usersign.do")
     public ResultVO sign(String token){
         return userSigninService.signin(token);
     }

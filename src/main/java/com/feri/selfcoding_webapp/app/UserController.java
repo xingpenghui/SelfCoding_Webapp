@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class UserController {
-    @Autowired
+   // @Autowired
     private UserService userService;
 
     //查询手机号是否可用
