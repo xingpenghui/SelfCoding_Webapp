@@ -2,6 +2,7 @@ package com.feri.selfcoding_webapp.app;
 
 import com.feri.common.util.ResultUtil;
 import com.feri.common.vo.ResultVO;
+import com.feri.selfcoding_webapp.util.AliyunOSSUtil;
 import com.feri.selfcoding_webapp.util.FileUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -38,6 +39,7 @@ public class FileUploadController {
                         File.separator+"selfresource");
                 File desFile=new File(dir,fn);
                 f.transferTo(desFile);
+               //paths.add(AliyunOSSUtil.fileUploadFile(fn,f.getInputStream()));
                 paths.add("/selfresource"+File.separator+dir.getName()+File.separator+fn);
             }
             return  ResultUtil.execOK(paths);
@@ -60,6 +62,32 @@ public class FileUploadController {
                 buffer.append(fn);
                 vedio.transferTo(new File(dir,fn));
             return  ResultUtil.execOK(buffer.toString());
+        }
+        return ResultUtil.execERROR();
+    }
+    //上传文件或图片
+    @ApiOperation(value = "文件或图片上传",notes = "基于OSS，支持多文件上传")
+    @PostMapping("ossfileupload.do")
+    public ResultVO ossupload(@RequestParam("file") MultipartFile[] files, HttpServletRequest request) throws IOException {
+        if(files!=null && files.length>0){
+            List<String> paths=new ArrayList<>();
+            for(MultipartFile f:files){
+                //获取上传的文件名称
+                String fn=FileUtil.renameFile(f.getOriginalFilename());
+                paths.add(AliyunOSSUtil.fileUploadFile(fn,f.getInputStream()));
+            }
+            return  ResultUtil.execOK(paths);
+        }
+        return ResultUtil.execERROR();
+    }
+    //上传视频
+    @ApiOperation(value = "视频上传",notes = "基于OSS，视频上传，不要太大")
+    @PostMapping("ossvideoupload.do")
+    public ResultVO ossuploadVideo(@RequestParam("video") MultipartFile vedio, HttpServletRequest request) throws IOException {
+        if(vedio!=null ){
+            //获取上传的文件名称
+            String fn=FileUtil.renameFile(vedio.getOriginalFilename());
+            return  ResultUtil.execOK(AliyunOSSUtil.fileUploadFile(fn,vedio.getInputStream()));
         }
         return ResultUtil.execERROR();
     }

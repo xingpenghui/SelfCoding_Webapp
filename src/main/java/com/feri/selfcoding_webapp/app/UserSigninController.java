@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class UserSigninController {
-    //@Autowired
+    @Autowired
     private UserSigninService userSigninService;
 
     //查询签到记录

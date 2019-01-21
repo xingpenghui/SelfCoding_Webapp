@@ -12,4 +12,7 @@
     <!--4、消费服务-->
     <dubbo:reference interface="com.feri.service.user.UserService" id="userProvider" retries="0" check="false"></dubbo:reference>
     <dubbo:reference interface="com.feri.service.user.UserSigninService" id="usersigninProvider" retries="0" check="false"></dubbo:reference>
+    <dubbo:reference interface="com.feri.service.user.UserdetailService" id="userdetailProvider" retries="0" check="false"></dubbo:reference>
+    <dubbo:reference interface="com.feri.service.video.VideoService" id="videoProvider" retries="0" check="false"></dubbo:reference>
+    <dubbo:reference interface="com.feri.service.pay.PayService" id="payProvider" retries="0" check="false"></dubbo:reference>
 </beans>
